@@ -1,0 +1,24 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+
+df = pd.read_excel('Dados OJ287.xls', sheet_name='Dados')
+# df['DATA'] = pd.to_datetime(df['DATA'], format='%d/%m/%Y')
+# df['DATA1'] = df['DATA'].dt.strftime('%Y-%m-%d')
+
+# print(type(df['DATA']))
+# print(type(df['DATA1']))
+
+fig, ax1 = plt.subplots()
+color = 'tab:blue'
+ax1.plot(df['DATA'], df['DF'], color=color)
+
+ax2 = ax1.twiny()
+
+color = 'tab:orange'
+ax2.plot(df['JD'], df['DF'], color=color)
+
+fig.tight_layout()
+plt.legend()
+plt.show()
